@@ -1,4 +1,90 @@
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #ffffff;
+}
+
+header .contact-cont {
+  -webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+header .header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 15px;
+  font-size: 1rem;
+  color: #333333;
+  padding: 25px 15px;
+}
+
+@media only screen and (max-width: 767px) {
+  header .header-container {
+    padding: 22px 15px;
+  }
+}
+
+header .header-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 36px;
+  padding: 50px 0px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  header .header-title {
+    font-size: 32px;
+    padding: 50px 40px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  header .header-title {
+    padding: 48px 55px 65px 55px;
+    font-size: 32px;
+  }
+}
+
+header img {
+  max-width: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  header img {
+    max-width: 15px;
+  }
+}
+
+.mobile-btn {
+  padding: 30px 15px;
+}
+
+.mobile-btn button {
+  width: 290px;
+  height: 60px;
+  display: block;
+  margin-top: 15px;
+  border-radius: 40px;
+  border: 0px;
+  background: rgba(111, 111, 111, 0.5);
+}
+
+.mobile-btn button:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

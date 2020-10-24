@@ -1,3 +1,94 @@
+$roboto : 'Roboto', sans-serif;
+$body-bg-color :rgba(242, 242, 242, 1);
+$header-bg :#ffffff;
+$button-bg : rgba(111, 111, 111, 0.5);
+$button-hover-bg : rgb(111 111 111 / 78%);
+$p-2 : 10px;
+$p-3 : 15px;
+$p-4 : 20px;
+$p-5 : 30px;
+
+@mixin flex-container($justifyContent) {
+  display: flex;
+  justify-content: $justifyContent;
+}
+@mixin container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 $p-3;
+}
+
+@mixin  responsive($breakPoint) {
+  @if $breakPoint == md {
+    @media only screen and (max-width : 767px){@content};
+  }
+  @if $breakPoint == sm {
+    @media only screen and (max-width : 360px){@content};
+  }
+}
+
 body{
   margin: 0;
+  font-family: $roboto;
+  background-color: $body-bg-color;
+}
+
+header{
+  background-color: $header-bg;
+  .contact-cont {
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  }
+  .header-container {
+    @include flex-container(flex-end); 
+    @include container;
+    @include responsive(md) {
+      padding: 22px 15px;
+    };
+    font-size: 1rem;
+    color: #333333;
+    padding: 25px 15px;
+  }
+  .header-title{
+    @include flex-container(center); 
+    @include responsive(md) {
+      font-size: 32px; 
+      padding: 50px 40px;
+    };
+    @include responsive(sm) {
+      padding : 48px 55px 65px 55px; 
+      font-size: 32px;
+    };
+    font-size: 36px;
+    padding: 50px 0px;
+    text-align: center;
+  }
+  img {
+    max-width: $p-4;
+    @include responsive(md) {
+      max-width: $p-3; 
+    };
+  }
+}
+
+.mobile-btn {
+  padding: $p-5 $p-3;
+  button {
+    color: $header-bg;
+    width: 290px;
+    height: 60px;
+    display: block;
+    margin-top: $p-3;
+    border-radius: 40px;
+    border: 0px;
+    background: $button-bg;
+    // &:hover {
+    //   cursor: pointer;
+    //   background-color: red;
+    // }
+    button:hover {
+      // cursor: pointer;
+      background-color: red !important;
+      color: red;
+    }
+  }
 }
