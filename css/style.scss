@@ -2,37 +2,52 @@ $roboto : 'Roboto', sans-serif;
 $body-bg-color :rgba(242, 242, 242, 1);
 $header-bg :#ffffff;
 $button-bg : rgba(111, 111, 111, 0.5);
-$button-hover-bg : rgb(111 111 111 / 78%);
+$button-hover-bg :#56555599;;
+$card-bg : #6F6F6F;
+$card-font-color: #333333;
+$reg-font-size : 1.125rem;
 $p-2 : 10px;
 $p-3 : 15px;
 $p-4 : 20px;
-$p-5 : 30px;
-
+$p-5 : 25px;
+$p-6 : 30px;
 @mixin flex-container($justifyContent) {
   display: flex;
   justify-content: $justifyContent;
 }
+@mixin flex-items($items) {
+  align-items: $items;
+}
+@mixin flex-direction($direction) {
+  flex-direction: $direction;
+}
 @mixin container {
-  max-width: 1040px;
+  max-width: 1190px;
   margin: 0 auto;
   padding: 0 $p-3;
 }
-
 @mixin  responsive($breakPoint) {
+  @if $breakPoint == xl {
+    @media only screen and (max-width : 1200px){@content};
+  }
+  @if $breakPoint == lg {
+    @media only screen and (max-width : 992px){@content};
+  }
   @if $breakPoint == md {
     @media only screen and (max-width : 767px){@content};
+  }
+  @if $breakPoint == middle-md {
+    @media only screen and (max-width : 560px){@content};
   }
   @if $breakPoint == sm {
     @media only screen and (max-width : 360px){@content};
   }
 }
-
 body{
   margin: 0;
   font-family: $roboto;
   background-color: $body-bg-color;
 }
-
 header{
   background-color: $header-bg;
   .contact-cont {
@@ -45,7 +60,7 @@ header{
       padding: 22px 15px;
     };
     font-size: 1rem;
-    color: #333333;
+    color: $card-font-color;
     padding: 25px 15px;
   }
   .header-title{
@@ -69,11 +84,18 @@ header{
     };
   }
 }
-
+.btn-container-mobile {
+  display: none;
+  @include responsive(md) {
+    display: block; 
+  };
+}
 .mobile-btn {
-  padding: $p-5 $p-3;
+  padding: $p-6 $p-3;
+  @include flex-container(center);
   button {
     color: $header-bg;
+    font-size: $reg-font-size;
     width: 290px;
     height: 60px;
     display: block;
@@ -81,14 +103,225 @@ header{
     border-radius: 40px;
     border: 0px;
     background: $button-bg;
-    // &:hover {
-    //   cursor: pointer;
-    //   background-color: red;
-    // }
-    button:hover {
-      // cursor: pointer;
-      background-color: red !important;
-      color: red;
+    &:hover {
+      cursor: pointer;
+      background-color: $button-hover-bg;
+    }
+    &:focus {
+      outline: 0px ;
     }
   }
+}
+.card-main-container {
+  @include flex-container(center);
+  @include flex-items(center);
+  @include responsive(md){
+    @include flex-direction(column);
+    padding: 20px 0px;
+  }
+  padding: 20px;
+}
+.dark-card {
+  width: 355px;
+  background-color: $card-bg;
+  border-radius: 3px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  height: 364px;
+  @include responsive(lg) {
+    height: 325px;
+  }
+  @include responsive(md) {
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+    height: 364px;
+  };
+  .card-header {
+    color: $header-bg;
+    font-size: 36px;
+    padding-bottom: 51px;
+    text-align: center;
+    margin-top: 50px;
+    @include responsive(xl) {
+    };
+    @include responsive(lg) {
+      font-size: 28px;
+    };
+  }
+  .rounded-rupe {
+    @include flex-container(center); 
+    @include flex-items(center);
+    color: $header-bg;
+    font-size: 42px;
+    width: 140px;
+    height: 140px;
+    background-color: #AEAEAE;
+    border: 1px solid #979797;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 85px;
+  }
+  .border-b {
+    height: 1px;
+    background-color: #979797;
+    margin: 0 auto;
+    display: none;
+    @include responsive(md) {
+      display: block;
+      width: 80%;
+    };
+    @include responsive(sm) {
+      width: 78%;
+    };
+  }
+  .card-three {
+    padding: 52px 20px 20px 65px;
+    font-size: 1.125rem;
+    div {
+      margin-bottom: 23px;
+      a{
+        text-decoration: none;
+        color: $header-bg;
+      }
+    }
+    @include responsive(xl) {
+      padding: 52px 20px 20px 40px;
+    };
+    @include responsive(lg) {
+      font-size: 1rem;
+      padding: 52px 20px 20px 30px;
+    };
+    @include responsive(md) {
+      font-size: 1.125rem;
+      padding: 52px 20px 20px 65px;
+    };
+    @include responsive(sm) {
+      font-size: 1.125rem;
+      padding: 52px 20px 20px 35px;
+    };
+  }
+}
+.md-sec-card{
+  width: 450px;
+  @include responsive(md) {
+    display: none;
+  };
+  .card-two {
+    background-color: $header-bg;
+    border-radius: 3px;
+    margin: 0px $p-2;
+    text-align: center;
+    box-shadow: 1px 1px 5px 0px #0000004f;
+    text-align: center;
+    height: 440px;
+    @include responsive(lg) {
+      height: 380px;
+    }
+    @include responsive(md) {
+      height: 440px;
+    }
+  }
+  button {
+    color: $header-bg;
+    font-size: $reg-font-size;
+    width: 390px;
+    margin: 0 auto;
+    height: 60px;
+    display: block;
+    margin-top: $p-3;
+    border-radius: 40px;
+    border: 0px;
+    background: $button-bg;
+    &:hover {
+      cursor: pointer;
+      background-color: $button-hover-bg;
+    }
+    &:focus {
+      outline: 0px ;
+    }
+    @include responsive(xl) {
+      width: 90%;
+    };
+  }
+  .sec-card-header {
+    color: $card-font-color;
+    font-size: 22px;
+    margin-bottom: 35px;
+    padding-top: 17.5%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+.offer-main-container {
+  max-width: 450px;
+  padding: 0px 15px;
+  margin: 0 auto;
+  .offer-headline {
+    font-size: 0.8125rem;
+    padding-top: 22px;
+    padding-bottom: 15px;
+    color: $card-font-color;
+  }
+  .horizondal-line {
+    height: 1px;
+    background-color: #979797;
+    width: 100%;
+    margin-bottom: $p-4;
+  }
+  .rounded-rupe {
+    @include flex-container(center); 
+    @include flex-items(center);
+    color: $header-bg;
+    font-size: 42px;
+    width: 140px;
+    height: 140px;
+    background-color: #AEAEAE;
+    border: 1px solid #979797;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  .reverse-cont {
+    @include flex-container(center); 
+    @include flex-items(center);
+    @include responsive(middle-md){
+      @include flex-direction(column-reverse)
+    }
+  }
+  .disclosure-title {
+    color: $card-font-color;
+    font-size: 1.75rem;
+    margin-bottom: 40px;
+    padding-top: $p-3;
+    @include responsive(middle-md){
+      text-align: center;
+      margin-bottom: 16px;
+    }
+  }
+  .disclosure {
+    @include responsive(middle-md){
+      padding-top: 24px;
+      width: 100%;
+    }
+  }
+  .disclosure div{
+    font-size: 1.125rem;
+    color: $card-font-color;
+    margin-bottom: 13px;
+  }
+  .disclosure-light {
+    background-color: #ffffff;
+    margin-top: 30px;
+    padding: $p-4;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+  }
+  .dis-foot {
+    margin-top: 30px;
+    font-size: 0.8125rem;
+    color: $card-font-color;
+    padding-bottom: $p-2;
+  }
+}
+.sub-container {
+  padding-bottom: $p-6;
 }
